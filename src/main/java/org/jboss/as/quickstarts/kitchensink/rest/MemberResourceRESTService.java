@@ -43,4 +43,4 @@ public class MemberResourceRESTService {
       return em.find(Member.class, id);
    }
 
-s
+}
