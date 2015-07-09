@@ -1,33 +1,28 @@
 Kitchensink on OpenShift
 =========================
 
-This is the kitchensink JBoss quickstart app.  You can find more info @ http://www.jboss.org/jdf/quickstarts/jboss-as-quickstart/guide/KitchensinkQuickstart/
+This is the kitchensink JBoss quickstart app.  You can find more info [here](http://www.jboss.org/jdf/quickstarts/jboss-as-quickstart/guide/KitchensinkQuickstart/)
 
-Running on OpenShift Online
+Running on OpenShift
 --------------------
-
-Create an account at https://www.openshift.com
 
 Create a jbossas-7 application
 
-    rhc app create kitchensink jbossas-7 --from-code http://gitlab.osecloud.com/jenkins/kitchensink.git
+    oc new-app jboss-eap6-openshift~https://github.com/christianh814/kitchensink --name=ks
 
-That's it, you can now checkout your application at:
+Start your build:
 
-    http://kitchensink-$namespace.rhcloud.com
+    oc start-build ks
 
-PostgreSQL as a backend
------------------------
-By default, this quickstart uses H2 as the backend, but you may use
-PostgreSQL.
+View the build if you with
 
-To do this, add PostgreSQL cartridge to your application:
+    oc get builds
+    oc build-logs ks-1
 
-    rhc cartridge add postgresql-8.4 -a kitchensink
+Create a route
 
-Edit `src/main/resources/META-INF/persistence.xml` so that the data
-source points to `java:jboss/datasources/PostgreSQLDS`:
+    oc expose service ks
+    
+If you make a change to the code just fire off another build
 
-    <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
-
-Commit this change, and push.
+    oc start-build ks
