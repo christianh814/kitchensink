@@ -17,7 +17,7 @@ Make sure you're in the right directory
 
 Create The application using the template and editing your values (note your APPLICATION_HOSTNAME will be different depending on where you're logged in to):
 
-    oc process -f eap6-basic-sti.json -v APPLICATION_NAME=ks,APPLICATION_HOSTNAME=ks.demo.osecloud.com,GIT_URI=https://github.com/christianh814/kitchensink,GIT_REF="",GIT_CONTEXT_DIR="" | oc create -f -
+    oc process -f eap6-basic-sti.json -v APPLICATION_NAME=ks,APPLICATION_HOSTNAME=ks.demo.sbx.osecloud.com,GIT_URI=https://github.com/christianh814/kitchensink,GIT_REF="",GIT_CONTEXT_DIR="" | oc create -f -
 
 View your build
 
@@ -26,5 +26,5 @@ View your build
 
 Visit your application
 ```
-firefox http://ks.demo.osecloud.com
+firefox http://ks.demo.sbx.osecloud.com
 ```
