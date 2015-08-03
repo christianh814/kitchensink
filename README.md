@@ -6,23 +6,25 @@ This is the kitchensink JBoss quickstart app.  You can find more info [here](htt
 Running on OpenShift
 --------------------
 
-Create a jbossas-7 application
+Clone the OpenShift 3 templates
+```
+git clone https://github.com/openshift/openshift-ansible
+```
 
-    oc new-app jboss-eap6-openshift~https://github.com/christianh814/kitchensink --name=ks
+Make sure you're in the right directory
 
-Start your build:
+    cd openshift-ansible/roles/openshift_examples/files/examples/xpaas-templates/
 
-    oc start-build ks
+Create The application using the template and editing your values (note your APPLICATION_HOSTNAME will be different depending on where you're logged in to):
 
-View the build if you with
+    oc process -f eap6-basic-sti.json -v APPLICATION_NAME=ks,APPLICATION_HOSTNAME=ks.demo.osecloud.com,GIT_URI=https://github.com/christianh814/kitchensink,GIT_REF="",GIT_CONTEXT_DIR="" | oc create -f -
+
+View your build
 
     oc get builds
     oc build-logs ks-1
 
-Create a route
-
-    oc expose service ks
-    
-If you make a change to the code just fire off another build
-
-    oc start-build ks
+Visit your application
+```
+firefox http://ks.demo.osecloud.com
+```
