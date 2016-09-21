@@ -1,7 +1,7 @@
 Kitchensink on OpenShift
 =========================
 
-This is the kitchensink JBoss quickstart app.  You can find more info [here](http://www.jboss.org/jdf/quickstarts/jboss-as-quickstart/guide/KitchensinkQuickstart/)
+This is the kitchensink JBoss quickstart app.  You can find more info [here](https://github.com/jboss-developer/jboss-eap-quickstarts)
 
 Running on OpenShift
 --------------------
